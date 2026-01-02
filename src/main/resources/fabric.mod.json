@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "harmlessanimals",
+  "version": "${version}",
+  "name": "HarmlessAnimals",
+  "description": "govno",
+  "authors": [],
+  "contact": {},
+  "license": "Apache-2.0",
+  "icon": "assets/harmlessanimals/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "fabric-datagen": [
+      "org.stereometric.harmlessanimals.client.HarmlessAnimalsDataGenerator"
+    ],
+    "client": [
+      "org.stereometric.harmlessanimals.client.HarmlessAnimalsClient"
+    ],
+    "main": [
+      "org.stereometric.harmlessanimals.HarmlessAnimals"
+    ]
+  },
+  "mixins": [
+    "harmlessanimals.mixins.json",
+    {
+      "config": "harmlessanimals.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric-api": "*",
+    "minecraft": "${minecraft_version}"
+  }
+}
