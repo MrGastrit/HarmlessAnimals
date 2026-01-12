@@ -1,6 +1,8 @@
 package org.stereometric.harmlessanimals.entity.custom;
 
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.attribute.DefaultAttributeContainer;
 import net.minecraft.entity.attribute.EntityAttributes;
 import net.minecraft.entity.data.DataTracker;
@@ -11,6 +13,7 @@ import net.minecraft.entity.passive.PassiveEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.registry.tag.FluidTags;
 import net.minecraft.server.world.ServerWorld;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
@@ -18,6 +21,9 @@ import net.minecraft.storage.ReadView;
 import net.minecraft.storage.WriteView;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.Hand;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.random.Random;
+import net.minecraft.world.ServerWorldAccess;
 import net.minecraft.world.World;
 import org.jspecify.annotations.Nullable;
 import org.stereometric.harmlessanimals.item.ModItems;
@@ -240,5 +246,32 @@ public class MolluskEntity extends AnimalEntity implements GeoEntity {
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return geoCache;
     }
+
+
+    //shit
+    public static boolean canSpawnOnOceanFloor(
+            EntityType<MolluskEntity> type,
+            ServerWorldAccess world,
+            SpawnReason reason,
+            BlockPos pos,
+            Random random
+    ) {
+
+        if (!world.getFluidState(pos).isIn(FluidTags.WATER)) {
+            return false;
+        }
+
+        BlockState below = world.getBlockState(pos.down());
+        if (!below.isSolidBlock(world, pos.down())) {
+            return false;
+        }
+
+        if (pos.getY() > world.getSeaLevel() - 5) {
+            return false;
+        }
+
+        return true;
+    }
+
 }
 

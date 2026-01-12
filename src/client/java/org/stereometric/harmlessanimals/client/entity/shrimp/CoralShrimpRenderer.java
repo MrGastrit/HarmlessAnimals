@@ -1,0 +1,14 @@
+package org.stereometric.harmlessanimals.client.entity.shrimp;
+
+import net.minecraft.client.render.entity.EntityRendererFactory;
+import net.minecraft.client.render.entity.state.LivingEntityRenderState;
+import org.stereometric.harmlessanimals.entity.custom.shrimp.CoralShrimpEntity;
+import org.stereometric.harmlessanimals.entity.custom.shrimp.OrangeShrimpEntity;
+import software.bernie.geckolib.renderer.GeoEntityRenderer;
+import software.bernie.geckolib.renderer.base.GeoRenderState;
+
+public class CoralShrimpRenderer<R extends LivingEntityRenderState & GeoRenderState> extends GeoEntityRenderer<CoralShrimpEntity, R> {
+    public CoralShrimpRenderer(EntityRendererFactory.Context context) {
+        super(context, new CoralShrimpModel());
+    }
+}

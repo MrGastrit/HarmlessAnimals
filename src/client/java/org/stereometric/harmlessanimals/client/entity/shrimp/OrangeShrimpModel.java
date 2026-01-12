@@ -1,12 +1,13 @@
-package org.stereometric.harmlessanimals.client.entity;
+package org.stereometric.harmlessanimals.client.entity.shrimp;
 
 import net.minecraft.util.Identifier;
 import org.stereometric.harmlessanimals.HarmlessAnimals;
 import org.stereometric.harmlessanimals.entity.custom.ShrimpEntity;
+import org.stereometric.harmlessanimals.entity.custom.shrimp.OrangeShrimpEntity;
 import software.bernie.geckolib.model.GeoModel;
 import software.bernie.geckolib.renderer.base.GeoRenderState;
 
-public class ShrimpModel extends GeoModel<ShrimpEntity> {
+public class OrangeShrimpModel extends GeoModel<OrangeShrimpEntity> {
 
     private static final Identifier[] TEXTURES = {
             Identifier.of(HarmlessAnimals.MOD_ID, "textures/entity/coral_shrimp.png"),
@@ -24,7 +25,7 @@ public class ShrimpModel extends GeoModel<ShrimpEntity> {
     }
 
     @Override
-    public Identifier getAnimationResource(ShrimpEntity shrimpEntity) {
+    public Identifier getAnimationResource(OrangeShrimpEntity shrimpEntity) {
         return Identifier.of(HarmlessAnimals.MOD_ID, "shrimp");
     }
 }

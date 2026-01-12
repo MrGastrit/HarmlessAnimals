@@ -11,11 +11,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.stereometric.harmlessanimals.effect.ModEffects;
 import org.stereometric.harmlessanimals.entity.ModEntities;
+import org.stereometric.harmlessanimals.entity.custom.GreenFishEntity;
 import org.stereometric.harmlessanimals.entity.custom.MolluskEntity;
 import org.stereometric.harmlessanimals.entity.custom.ShrimpEntity;
 import org.stereometric.harmlessanimals.item.ModItems;
 import org.stereometric.harmlessanimals.item.ModItemsGroups;
 import org.stereometric.harmlessanimals.particle.ModParticles;
+import org.stereometric.harmlessanimals.world.gen.ModWorldGeneration;
 
 public class HarmlessAnimals implements ModInitializer {
 
@@ -29,8 +31,11 @@ public class HarmlessAnimals implements ModInitializer {
         ModItems.registerItems();
         ModItemsGroups.registerItemGroups();
         ModParticles.registerParticles();
+        ModWorldGeneration.generateModWorldGen();
 
-        FabricDefaultAttributeRegistry.register(ModEntities.SHRIMP, ShrimpEntity.createShrimpAttributes());
+        FabricDefaultAttributeRegistry.register(ModEntities.ORANGE_SHRIMP, ShrimpEntity.createShrimpAttributes());
+        FabricDefaultAttributeRegistry.register(ModEntities.CORAL_SHRIMP, ShrimpEntity.createShrimpAttributes());
         FabricDefaultAttributeRegistry.register(ModEntities.MOLLUSK, MolluskEntity.createMolluskAttributes());
+        FabricDefaultAttributeRegistry.register(ModEntities.GREEN_FISH, GreenFishEntity.createGFishAttributes());
     }
 }
